@@ -65,7 +65,7 @@ class BookStore:
 
 
 rahuals_bookstore = BookStore()
-rahuals_bookstore.add_book(Book("Book A", "Rahul", "Fantasy", 10, 10))
+rahuals_bookstore.add_book(Book("Book A", "Rahual", "Fantasy", 10, 10))
 rahuals_bookstore.add_book(Book("Book B", "Aaryan", "Fantasy", 12, 20))
 rahuals_bookstore.add_book(Book("Book C", "Niya", "Non-Fiction", 10, 15))
 rahuals_bookstore.list_books()
