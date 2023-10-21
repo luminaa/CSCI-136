@@ -20,7 +20,7 @@ class SinglyLinkedList:
     def __init__(self, head=None):
         self.head = None
 
-    def append(self, data):
+    def append(self, data): #append to the end of linked list
         if self.head is None:
             self.head = Node(data)
             return
@@ -30,7 +30,7 @@ class SinglyLinkedList:
                 current = current.next
             current.next = Node(data)
     
-    def print_list(self):
+    def print_list(self): #prints linked list to console
         current = self.head
         output = ""
         while current.next:
@@ -39,16 +39,16 @@ class SinglyLinkedList:
         output += str(current.data)
         print(output)
 
-    def find_middle(self):
+    def find_middle(self): #finds middle node of linked list
         slow = self.head
         fast = self.head
-        while fast.next and fast.next.next:
+        while fast.next and fast.next.next: #fasr pointer moves twice as fast as slow pointer
             slow = slow.next
             fast = fast.next.next
         middle = slow.next
         return middle
     
-    def split(self):
+    def split(self): #splits linked list into two halves, for uneven lists, first list is bigger by 1
         middle = self.find_middle()
         left = SinglyLinkedList()
         right = SinglyLinkedList()
@@ -103,5 +103,3 @@ r.print_list()
 merged = l.merge(r)
 merged.print_list()
 
-sorted_list = linked_list.merge_sort()
-sorted_list.print_list()
