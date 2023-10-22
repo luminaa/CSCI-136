@@ -96,10 +96,5 @@ for node in nodes:
 linked_list.print_list()
 print("Middle Node:", linked_list.find_middle().data)
 
-l,r = linked_list.split()
-l.print_list()
-r.print_list()
-
-merged = l.merge(r)
-merged.print_list()
-
+sorted_list = linked_list.merge_sort()
+sorted_list.print_list()
