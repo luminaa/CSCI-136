@@ -16,6 +16,16 @@ class BST:
         if node == None:
             return []
         return self.inorder(node.left) + [node.value] + self.inorder(node.right)
+    
+    def preorder(self, node):
+        if node == None:
+            return []
+        return [node.value] + self.preorder(node.left) + self.preorder(node.right)
+    
+    def postorder(self, node):
+        if node == None:
+            return []
+        return self.postorder(node.left) + self.postorder(node.right) + [node.value]
 
     def insert(self, value):
         if self.root == None:
@@ -66,6 +76,7 @@ class BST:
         
         # scenario 1: node has no children
         if node.left == None and node.right == None:
+            print("scenario 1")
             if node.parent == None:
                 self.root = None
             elif node.parent.left == node:
@@ -75,6 +86,7 @@ class BST:
         
         # scenario 2: node has one child
         elif node.left == None or node.right == None:
+            print("scenario 2")
             if node.parent == None:
                 self.root = node.right
             elif node.parent.left == node:
@@ -84,6 +96,7 @@ class BST:
         
         # scenario 3: node has two children
         else:
+            print("scenario 3")
             successor = node.right
             while successor.left != None:
                 successor = successor.left #smallest value on the right subtree (the value will bt the next biggest value)
@@ -92,17 +105,14 @@ class BST:
                 successor.parent.left = successor.right
             else:
                 successor.parent.right = successor.right
-
         
-tree = BST()
-tree.insert(5)
-tree.insert(3)
-tree.insert(7)
-tree.insert(6)
-tree.insert(8)
-tree.insert(2)
-tree.insert(4)
-print(tree.inorder(tree.root))
-tree.delete(5)
-print(tree.inorder(tree.root))
 
+values = [5,3,2,4,7,9]
+tree = BST()
+for value in values:
+    tree.insert(value)
+print(tree.inorder(tree.root))
+print(tree.preorder(tree.root))
+print(tree.postorder(tree.root))
+tree.delete(3)
+print(tree.inorder(tree.root))
