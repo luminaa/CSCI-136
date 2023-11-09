@@ -4,9 +4,6 @@ class Node:
         self.left = None
         self.right = None
         self.parent = parent
-
-    def __repr__(self):
-        return f"Node({self.value})"
     
 class BST:
     def __init__(self, root=None):
@@ -107,12 +104,10 @@ class BST:
                 successor.parent.right = successor.right
         
 
-values = [5,3,2,4,7,9]
+values = [15,6,3,2,7,4,18,17,13,9,20]
 tree = BST()
 for value in values:
     tree.insert(value)
 print(tree.inorder(tree.root))
 print(tree.preorder(tree.root))
 print(tree.postorder(tree.root))
-tree.delete(3)
-print(tree.inorder(tree.root))
