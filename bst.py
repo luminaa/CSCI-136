@@ -4,11 +4,11 @@ class Node:
         self.left = None
         self.right = None
         self.parent = parent
-        self.height = 0
     
 class BST:
     def __init__(self, root=None):
         self.root = root
+        self.height = 0
 
     def inorder(self, node):
         if node == None:
@@ -43,8 +43,8 @@ class BST:
                         break
                     else:
                         curr = curr.right
-        self.root.height = self.find_height(self.root)
-        print("Added:", str(value).rjust(2," "), "Height:", self.root.height)
+        self.height = self.find_height(self.root)
+        print("Added:", str(value).rjust(2," "), "Height:", self.height)
     
     def minimun(self):
         curr = self.root
