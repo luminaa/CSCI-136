@@ -4,6 +4,7 @@ class Node:
         self.left = None
         self.right = None
         self.parent = parent
+        self.height = 0
     
 class BST:
     def __init__(self, root=None):
@@ -33,15 +34,17 @@ class BST:
                 if value < curr.value:
                     if curr.left == None:
                         curr.left = Node(value, curr)
-                        return
+                        break
                     else:
                         curr = curr.left
                 else:
                     if curr.right == None:
                         curr.right = Node(value, curr)
-                        return
+                        break
                     else:
                         curr = curr.right
+        self.root.height = self.find_height(self.root)
+        print("Added:", str(value).rjust(2," "), "Height:", self.root.height)
     
     def minimun(self):
         curr = self.root
@@ -103,6 +106,11 @@ class BST:
             else:
                 successor.parent.right = successor.right
         
+    def find_height(self, node):
+        if node == None:
+            return 0
+        return 1 + max(self.find_height(node.left), self.find_height(node.right))
+        
 
 values = [15,6,3,2,7,4,18,17,13,9,20]
 tree = BST()
@@ -111,3 +119,7 @@ for value in values:
 print(tree.inorder(tree.root))
 print(tree.preorder(tree.root))
 print(tree.postorder(tree.root))
+
+print(tree.minimun())
+print(tree.maximum())
+print(tree.find(13).value)
